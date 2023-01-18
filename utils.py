@@ -133,3 +133,9 @@ def PSNR(im, im_ref):
     mse = MSE(im, im_ref)
     psnr = 20 * np.log10(255/np.sqrt(mse))
     return psnr
+
+def CC(im, im_ref):
+    im_v = np.reshape(im, im.shape[0]*im.shape[1])
+    im_ref_v = np.reshape(im_ref, im_ref.shape[0]*im_ref.shape[1])
+    cc = np.corrcoef(im_v, im_ref_v) # Pearson product moment coefficient
+    return cc
